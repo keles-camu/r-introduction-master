@@ -1,0 +1,351 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+[**UNIT 3. MATRICES**]{.underline}
+
+**EXAMPLES**
+
+```{r}
+matriz <- matrix(1:12, nrow = 6, ncol = 2, byrow = TRUE) #Con TRUE, el vector será ordenado por filas
+matriz
+```
+
+```{r}
+automoviles <- matrix(1:12, nrow = 4, dimnames = list(c("Blanco", "Rojo", "Negro", "Gris"), c("Toyota", "Audi", "Nissan"))) #Con dimnames asignamos nombres, a las filas primero y a las columnas después
+
+automoviles
+```
+
+```{r}
+# Para comprobar o forzar el carácter de matriz de un objeto
+
+is.matrix(automoviles)
+as.matrix(automoviles)
+```
+
+**FUNCTIONS**
+
+-   colnames(): asignar nombres a columnas.
+
+-   rownames(): asignar nombres a filas.
+
+-   ncol(x): número de columnas de x.
+
+-   nrow(x): número de filas de x.
+
+-   t(x): transpuesta de x.
+
+-   cbind(\...): combina secuencias de vectores/matrices por col's.
+
+-   rbind(\...): combina secuencias de vectores/matrices por filas.
+
+-   diag(x): extrae diagonal de matriz o crea matriz diagonal.
+
+-   Id(nº dimensión): matriz identidad.
+
+-   dim(): dimensión de la matriz.
+
+-   dimnames(): devuelve nombres de filas y columnas.
+
+-   col(x): crea una matriz con elemento ij igual al valor j.
+
+-   row(x): crea una matriz con elemento ij igual al valor i.
+
+```{r}
+v1 <- c(1, 2, 3)
+v2 <- c(4, 5, 6)
+m1 <- cbind(v1, v2)
+m1
+```
+
+```{r}
+v1 <- c(1, 2, 3)
+v2 <- c(4, 5, 6)
+m1 <- rbind(v1, v2)
+m1
+```
+
+```{r}
+dim(automoviles)
+
+nrow(automoviles)
+
+ncol(automoviles)
+
+length(automoviles)
+```
+
+```{r}
+colores <- rownames(automoviles)
+colores
+```
+
+```{r}
+marcas <- colnames(automoviles)
+marcas
+```
+
+```{r}
+# Comprobar denominación de filas y columnas
+
+dimnames(automoviles)
+```
+
+```{r}
+A <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, ncol = 3, byrow = TRUE)
+A
+
+diag(A)
+```
+
+```{r}
+Id4 = diag(1, nrow = 4) # Matriz identidad de dimensión 4
+Id4
+```
+
+**OPERATORS**
+
+-   Suma valores a la matriz:
+
+```{r}
+M = matrix(c(1,2,3, 4), nrow=2, byrow = FALSE)
+M
+```
+
+```{r}
+M + 2
+```
+
+-   Suma de matrices de distinta dimensión:
+
+```{r}
+v = c(3,4)
+
+M + v
+```
+
+-   Operaciones con matrices:
+
+```{r}
+M + M
+```
+
+```{r}
+M - M
+```
+
+```{r}
+M * M
+```
+
+```{r}
+M / M
+```
+
+**SLICING**
+
+-   Escribiendo el nombre de la matriz y entre corchetes los nombres de la fila y columnas entre\
+    comillas:
+
+```{r}
+automoviles["Blanco", "Audi"]
+```
+
+-   Utilizar la notación de índices:
+
+```{r}
+ automoviles[1, 2]
+```
+
+-   Seleccionar columnas y filas enteras:
+
+```{r}
+automoviles[1,]
+```
+
+-   Otra forma de hacerlo es:
+
+```{r}
+automoviles["Blanco",]
+```
+
+**ADD ROWS AND COLUMNS**
+
+-   rbind():
+
+```{r}
+Verde <- c(8, 5, 7)
+automoviles <- rbind(automoviles, Verde) 
+
+automoviles
+```
+
+-   cbind():
+
+```{r}
+Ford <- c(2, 7, 3, 5, 9)
+automoviles <- cbind(automoviles, Ford)
+
+automoviles
+```
+
+**DELETE ROWS AND COLUMNS**
+
+-   Delete rows: [-i,]
+
+```{r}
+automoviles[-5, ]
+```
+
+-   Delete columns: [,-j]
+
+```{r}
+automoviles[, -4]
+```
+
+**CASE 1**
+
+Exercise 1: Crear una matriz como la siguiente:
+
+     **[, 1] [, 2] [, 3]**
+
+**[1,]    1    8     3**
+
+**[2,]    5    1     2**
+
+```{r}
+exercise_1 <- matrix(c(1, 5, 8, 1, 3, 2), ncol = 3)
+exercise_1
+```
+
+-   Primer elemento de la primera columna.
+
+-   Segunda fila, tercera columna.
+
+-   Primera fila.
+
+-   Segunda columna.
+
+-   Primera y segunda columna, primera fila.
+
+-   Primera y tercera columna, segunda fila.
+
+-   Todas las columnas excepto la segunda.
+
+```{r}
+exercise_1[1,1] # Equivalente a [1] y a [[1]]
+exercise_1[2,3]
+exercise_1[1,]
+exercise_1[,2]
+exercise_1[1,c(1, 2)]
+exercise_1[2,c(1, 3)]
+exercise_1[,-2]
+```
+
+Exercise 2: Crear vectores para las columnas de la matriz:
+
+**warner \<- c(20, 20, 16, 17, 17, 22, 17, 18, 19)**
+
+**disney \<- c(11, 13, 11, 8, 12, 11, 12, 8, 10)**
+
+**fox \<- c(18, 15, 15, 15, 16, 17, 15, 13, 11)**
+
+-   Crear una matriz llamada compañiascine a partir de vectores antes anteriores.
+
+-   Imprimir el contenido de la matriz.
+
+```{r}
+warner <- c(20, 20, 16, 17, 17, 22, 17, 18, 19)
+disney <- c(11, 13, 11, 8, 12, 11, 12, 8, 10)
+fox <- c(18, 15, 15, 15, 16, 17, 15, 13, 11)
+
+cine_company <- matrix(c(warner, disney, fox), ncol = 3)
+cine_company
+```
+
+```{r}
+warner <- c(20, 20, 16, 17, 17, 22, 17, 18, 19)
+disney <- c(11, 13, 11, 8, 12, 11, 12, 8, 10)
+fox <- c(18, 15, 15, 15, 16, 17, 15, 13, 11)
+
+cine_company <- matrix(c(warner, disney, fox), ncol = 3, dimnames = list(c("film-1", "film-2", "film-3", "film-4", "film-5", "film-6", "film-7", "film-8", "film-9"), c("warner", "disney", "fox")))
+cine_company
+```
+
+**CASE 2**
+
+Exercise 1: Crear una matriz 3 x 2, como la siguiente:
+
+[,1] [,2]\
+
+[1,] 1 4\
+
+[2,] 2 5\
+
+[3,] 3 6
+
+De ella, se quiere ver: a. Número de elementos de x. b. Tipo de datos de la matriz x. c. Dimensiones de la matriz x. d. Nombre de las filas de la matriz. e. Nombre de las columnas de la matriz.
+
+```{r}
+exercise_2 <- matrix(c(1, 2, 3, 4, 5, 6), ncol = 2)
+exercise_2
+```
+
+```{r}
+length(exercise_2)
+
+typeof(exercise_2)
+
+dim(exercise_2)
+
+nrow(exercise_2)
+
+ncol(exercise_2)
+```
+
+Exercise 2: Se debe crear la siguiente matriz:
+
+|      | Edad | Peso | Altura |
+|------|------|------|--------|
+| Paco | 20   | 65   | 174    |
+| Pepe | 22   | 70   | 180    |
+| Kiko | 19   | 68   | 170    |
+
+-   Edades de todas las personas.
+
+-   Datos de "Pepe".
+
+-   Mostrar los nombres de filas y cols.
+
+```{r}
+exercise_3 <- matrix(c(20, 22, 19, 65, 70, 68, 174, 180, 170), ncol = 3, dimnames = list(c("Paco", "Pepe", "Kiko"), c("Edad", "Peso", "Altura")))
+exercise_3
+```
+
+```{r}
+#También se puede crear primero los vectores y luego unirlos:
+e<-c(20,22,19)
+p<-c(65,70,68)
+a<-c(174,180,170)
+
+exercise_3 <- matrix(c(e,p,a), ncol = 3, dimnames = list(c("Paco", "Pepe", "Kiko"), c("Edad", "Peso", "Altura")))
+exercise_3
+```
+
+```{r}
+exercise_3[,"Edad"] #Igual a: exercise_3[,1]
+```
+
+```{r}
+exercise_3["Pepe",] #Igual a: exercise_3[2,]
+```
+
+```{r}
+rownames(exercise_3)
+```
+
+```{r}
+colnames(exercise_3)
+```

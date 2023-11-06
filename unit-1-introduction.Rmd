@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+[**UNIT 1. INTRODUCTION**]{.underline}
+
+**CASE 1**
+
+Exercise 1:
+
+```{r}
+sqrt(-17)
+```
+
+```{r}
+sqrt(-17+0i)
+```
+
+```{r}
+x<-5/0
+```
+
+```{r}
+x
+```
+
+```{r}
+exp(-x)
+```
+
+Exercise 2:
+
+```{r}
+x <- 5
+y <- 2
+
+x > y
+x == y
+x != y
+```
+
+**CASE 2**
+
+Exercise 1:
+
+```{r}
+1+1+2+3+5+8
+
+8-13
+
+13*21
+
+34*34
+
+55/34 * sqrt (89)
+```
+
+Exercise 2:
+
+```{r}
+2 * 5 + 1
+
+2 * (5 + 1)
+```

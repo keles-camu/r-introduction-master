@@ -1,0 +1,168 @@
+**UNIT 6. DATA STRUCTURES**
+
+**CONDITIONAL STRUCTURES**
+
+-   if:
+
+if (condicion) {\
+accion\
+} else if (condicion) {\
+accion\
+} else {\
+accion\
+}
+
+```{r}
+if(4 > 3) {
+  "Verdadero"
+} else {
+  "Falso"
+}
+```
+
+-   switch (igual que if, pero se aconseja su uso para condicionar múltiples condiciones).
+
+    -   Example:
+
+```{r}
+(muestra <- sample(1:100, 20, 2)) #Muestra de 20 observaciones del 1 al 100 en el que se pueden repetir hasta dos observaciones
+```
+
+```{r}
+(switch("media", media = mean(muestra), mediana = median(muestra))) #Si no coincide ninguno con "media" devuelve NULL-
+```
+
+```{r}
+j <- switch (3, "uno", "dos", "tres", "cuatro")
+j
+```
+
+**REPETITION STRUCTURES**
+
+-   for:
+
+```{r}
+(observaciones <- sample(1:50, 100, replace= TRUE))
+```
+
+```{r}
+suma = 0
+
+for (i in seq_along(observaciones)) {
+  suma <- observaciones[i] + suma
+  media <- suma/length(observaciones)
+}
+
+suma
+```
+
+-   while (ejecuta un bucle mientras sea verdadera una condición):
+
+```{r}
+n = 1
+
+while(n <= 5) {
+  print(n)
+  n = n + 1
+}
+```
+
+-   repeat (ejecuta un bucle indefinidamente, siendo la única forma de detener esta estructura mediante el comando break. Siempre entra la condición al menos una vez en el bucle, a diferencia de "while", donde si no se cumple la condición de partida, nunca pinta nada por pantalla):
+
+```{r}
+n = 1
+
+repeat{
+  if (n <= 10) {
+    print(n)
+    n = n + 1
+  }  else{
+      break
+  }
+}
+```
+
+-   vectorización: permite hacer una estructura repetitiva uniendo diferentes vectores.
+
+```{r}
+n <- 4
+
+v1 <- c(1, 2, 3, 4)
+v2 <- c(5, 6, 7, 8)
+v3 <- vector(mode = "integer", length = length(n))
+
+for (i in 1:n) {
+  v3[i] <- v1[i] + v2[i]
+}
+
+v3
+```
+
+**CASE 1**
+
+Exercise 1: Indicar si es un número par o impar.
+
+```{r}
+x <- 5
+
+if (x %% 2 == 0) {
+  print ("x es par")
+} else {
+  print ("x es impar")
+}
+```
+
+Exercise 2: Dados los vectores: v= (12, -3, 5 ,18.7) y w= (12, 0.25, 77, exp(2)).
+
+-   Obtener la suma de los dos vectores mediante bucles y comprobarlo empleando v+w.
+
+-   Obtener la suma de las componentes del vector v y almacenarlos en c.
+
+```{r}
+v <- c(12, -3, 5, 18.7)
+w <- c(12, 0.25, 77, exp(2))
+
+sum = 0
+n = length(v)
+
+for (i in 1:n) {sum[i]=v[i]+w[i]}
+sum
+
+v+w
+```
+
+```{r}
+c = 0
+n = length (v)
+for (i in 1:n) {c = c + v [i]}
+
+c
+```
+
+**CASE 2**
+
+Exercise 1: Determinar el signo de un número: positivo, negativo o nulo.
+
+```{r}
+z <- -2
+
+if (z > 0) {
+  "z es positvo"
+} else if (z < 0) {
+  "z es negativo"
+} else {
+  "nulo o cero"
+}
+```
+
+Exercise 2: Generar una secuencia de números del 1 al 10. Cuando llegue al 4, se debe romper la secuencia con un *break*. Mientras no sea así, pintar los valores por pantalla.
+
+```{r}
+for (i in 1:10){
+  if (i == 4){
+  break
+  }else{
+  print (i)
+  }
+}
+```

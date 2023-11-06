@@ -1,0 +1,204 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+[**UNIT 4. LISTS**]{.underline}
+
+**EXAMPLES**
+
+-   Create a list:
+
+```{r}
+lista <- list(1:3, "Ruben", pi, list(c(-1, -2), -5))
+lista
+```
+
+-   Names:
+
+```{r}
+names(lista) <- c("a", "b", "c", "d")
+lista
+```
+
+-   Structure:
+
+```{r}
+str(lista)
+```
+
+```{r}
+new_list <- list(a = 1:3, b = "Ruben", c = pi, d = list(c (-1, -2), -5))
+str(new_list[[3]])
+```
+
+-   Slicing:
+
+```{r}
+lista <- list(a = 1:3, b = "Ruben", c = pi, d = list(c(-1, -2), -5)) #Se añade la etiqueta, en vez de usar la función names
+
+#Método 1 []:
+str(lista[1:2])
+```
+
+```{r}
+#Método 2 [[]] extrae un único componente de la lista:
+str(lista[[1]])
+```
+
+```{r}
+#Método3 $ extrae elementos de una lista por medio de su nombre:
+str(lista$a)
+```
+
+**CASE 1**
+
+Exercise 1: Crear una lista formada por los vectores.
+
+-   Edad: generar un vector con las edades aleatorias empezando por 10 hasta 40. Usar la función **rnorm.**
+
+-   Seguridad social: crear un vector que genere T o F por si tiene número o no. Para ello, repetir la secuencia de F, T 5 veces.
+
+Mostrar la lista resultante.
+
+```{r}
+#Solución temario
+edad <- round(rnorm(10,40,10))
+edad
+```
+
+```{r}
+#Solución correcta
+edad <- sample(10:40,10) #(inicio:final intervalo, n observaciones)
+edad
+```
+
+```{r}
+ss <- rep(c(F,T),5)
+ss
+```
+
+```{r}
+result_list <- list(Edad=edad, SeguridadSocial=ss)
+result_list
+```
+
+Exercise 2: Indicar qué devuelve cada lista de las que tienes a continuación:
+
+```{r}
+Otra<-list(Numeros=1:20,Letras=letters[1:15])
+Otra
+```
+
+```{r}
+li [[1]] <- "hola"
+```
+
+```{r}
+li [[4]] <- FALSE
+```
+
+```{r}
+li [[5]] <- pi
+```
+
+**CASE 2**
+
+Exercise 1: Crear una lista llamada *familia* con los siguientes campos:
+
+Padre="Juan",
+
+Madre="María",
+
+NumerodeHijos=3,
+
+Nombrehijos="Luis","Carlos","Eva"
+
+Edades=7, 5,3
+
+Ciudad="Madrid"\
+
+1\. Mostrar la lista que se ha creado.
+
+2\. Mostrar el nombre del padre usando \$.
+
+3\. Mostrar el nombre de la madre [[]].
+
+4\. Mostrar la cantidad de hijos que hay en la lista.
+
+```{r}
+familia <- list(Padre="Juan", Madre="María", NumHijos=3, NomHijos=c("Luis","Carlos","Eva"), Edades=c(7,5,3), Ciudad="Madrid") #Usamos vectores cuando tenemos más de un valor.
+
+familia
+```
+
+```{r}
+familia$Padre
+```
+
+```{r}
+familia[[2]]
+```
+
+```{r}
+familia[[3]]
+```
+
+Exercise 2. Crear una lista llamada familia2 con los siguientes campos:
+
+Hombre = "Pedro",
+
+Mujer = "María",
+
+Casados = TRUE,
+
+Numero. Hijos = 4,
+
+Edad. Hijos = 4, 7, 9, 2
+
+Nombre. Hijos='Hugo', 'Paco', 'Luis', 'Mary'
+
+1\. Mostrar la lista que se ha creado.
+
+2\. Mostrar el nombre del hombre y la mujer.
+
+3\. Mostrar la edad de los hijos.
+
+4\. Mostrar el nombre de los hijos.
+
+```{r}
+familia2 <- list (Hombre = "Pedro", Mujer = "María", Casados = TRUE, NumHijos = 4, EdadHijos = c(4, 7, 9, 2), NomHijos = c('Hugo', 'Paco', 'Luis', 'Mary'))
+
+familia2
+```
+
+```{r}
+familia2$Hombre
+```
+
+```{r}
+familia2$Mujer
+```
+
+```{r}
+familia2[[5]]
+```
+
+```{r}
+familia2$NomHijos
+```
+
+```{r}
+familia2$NomHijos[1] #Para acceder a un valor dentro de un vector no hace falta doble []
+```
+
+```{r}
+ listo <- list(a = 1:3, b = "Juan", c = pi, d = list(c(-1, -2), -5))
+ str(listo[[1]])
+```
+
+```{r}
+vector <- sample(1:50, 10, replace = TRUE)
+
+vector
+```

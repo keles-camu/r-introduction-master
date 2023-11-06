@@ -1,0 +1,184 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+**UNIT 7. FUNCTIONS**
+
+function.name \<- function(argumentos) {\
+computacion_en_los_argumentos\
+otro_codigo\
+}
+
+return / print, indistintamente, e incluso puede omitirse
+
+**DEFINIDAS POR EL USUARIO**
+
+```{r}
+suma <- function(x, y){
+  x + y
+}
+
+suma (x = 2, y = 3) #Equivalente a: suma (2, 3)
+```
+
+**ARGUMENTOS**
+
+```{r}
+area_rectangulo <- function(lado1, lado2){
+  lado1 * lado2
+}
+area_rectangulo(2, 3) #Equivalente a: (lado1=2, lado2=3)
+```
+
+-   Argumento especial: ... (tres puntos).
+
+Captura todos los valores pasados a la función que no coinciden con ningún argumento.
+
+Permite pasar a una función una cantidad no prefijada de valores.
+
+Equivalente a (\*) en Python.
+
+```{r}
+sumar_pares <- function(...)
+{
+valores <- c(...)
+
+if(!is.numeric(valores)) return('NaN')
+contador <- 0
+
+for(n in valores){
+  if(n%%2 == 0){
+contador <- contador + n
+}
+}
+contador
+}
+sumar_pares(1:10)
+```
+
+**COMBINAR FUNCIONES**
+
+```{r}
+fahr_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+
+  fahr_to_celsius <- function(temp) {
+    temp_k <- fahr_to_kelvin(temp)
+  result <- kelvin_to_celsius(temp_k)
+      return(result)
+        }
+
+  kelvin_to_celsius <- function(temp) {
+    celsius <- temp - 273.15
+      return(celsius)
+        }
+
+fahr_to_celsius(80.0)
+```
+
+**FUNCIONES ANÓNIMAS**
+
+A una función anónima no se le asigna un nombre. Es útil cuando la función es parte de una operación más grande, pero en sí misma no ocupa mucho lugar.
+
+Un caso de uso frecuente para las funciones anónimas se encuentra dentro de la familia \* apply de funciones Base.
+
+**FUNCIONES RECURSIVAS**
+
+```{r}
+recur_factorial <- function(n) {
+
+if(n <= 1) {
+  return(1)
+} else {
+  return(n * recur_factorial(n-1))
+}
+}
+
+recur_factorial(5)
+```
+
+**CASE 1**
+
+Exercise 1: Crear una función llamada fcondición y realizar la siguiente comprobación: si x es menor a 5 toma el valor 0 y en caso contrario el valor 10.
+
+```{r}
+f_condiction <- function(x) {
+
+if(x < 5) {
+  return(0)
+  } else {
+    return(10)
+    }
+}
+
+f_condiction(3)
+f_condiction(5)
+```
+
+Exercise 2: Crear una función que pasándole un valor diga si es negativo devuelve un 0. Si es menor o igual a 10 devuelve el valor dividido entre 10. En cualquier otro caso devuelve un 1.
+
+```{r}
+f_exercise <- function(y) {
+
+if(y < 0) {
+  return(0)
+  } else {
+      if (y <= 10){
+        return(y/10)
+      } else {
+        return(1)
+      }
+    }
+}
+
+f_exercise(-1)
+f_exercise(5)
+f_exercise(100)
+```
+
+**CASE 2**
+
+Exercise 1: Calcular la media entre dos números pasados a una función.
+
+```{r}
+media <- function(a, b){
+return((a+b)/2)
+}
+
+media (3, 4)
+```
+
+-   Mismo ejercicio con un número indeterminado de valores.
+
+```{r}
+media <- function(...){
+contador <- 0
+valores <- c(...)
+
+for (i in valores){
+  contador <- contador + i
+}
+
+contador/length(valores)
+
+}
+
+media (1:5)
+```
+
+Exercise 2: Crear una función que calcule el valor absoluto de un parámetro pasado por argumento.
+
+```{r}
+absoluto <- function(z){
+  if (z<0){
+    (-1*z)
+  } else {
+    z
+  }
+}
+
+absoluto(-2)
+```
